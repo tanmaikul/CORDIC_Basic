@@ -1,0 +1,55 @@
+# Tiny Tapeout project information
+project:
+  title:        "13-Stage Pipelined CORDIC"
+  author:       "tanmaikul"
+  discord:      ""
+  description:  "13-stage pipelined CORDIC hardware engine for vector rotation and sin/cos calculation"
+  language:     "Verilog"
+  clock_hz:     10000000
+
+# How many tiles your design occupies? A single tile is 1x1.
+  tiles: "1x1"
+
+# Your top module name must start with "tt_um_" and should be unique to your project:
+  top_module:  "tt_um_tanmaikul_cordic"
+
+# List your cell's Verilog source files here.
+# Source files must be in ./src and you must list each source file separately, one per line:
+  source_files:
+    - "project.v"
+    - "cordic_0_360_13stages.v"
+    - "reg16.v"
+    - "add16bit.v"
+
+# Pinout mapping
+pinout:
+  # Dedicated inputs
+  ui[0]: "angle[0] (Direct) / data_in[0] (Reg)"
+  ui[1]: "angle[1] (Direct) / data_in[1] (Reg)"
+  ui[2]: "angle[2] (Direct) / data_in[2] (Reg)"
+  ui[3]: "angle[3] (Direct) / data_in[3] (Reg)"
+  ui[4]: "angle[4] (Direct) / data_in[4] (Reg)"
+  ui[5]: "angle[5] (Direct) / data_in[5] (Reg)"
+  ui[6]: "angle[6] (Direct) / data_in[6] (Reg)"
+  ui[7]: "angle[7] / sign (Direct) / data_in[7] (Reg)"
+
+  # Dedicated outputs
+  uo[0]: "uo_out[0] (data byte bit 0)"
+  uo[1]: "uo_out[1] (data byte bit 1)"
+  uo[2]: "uo_out[2] (data byte bit 2)"
+  uo[3]: "uo_out[3] (data byte bit 3)"
+  uo[4]: "uo_out[4] (data byte bit 4)"
+  uo[5]: "uo_out[5] (data byte bit 5)"
+  uo[6]: "uo_out[6] (data byte bit 6)"
+  uo[7]: "uo_out[7] (data byte bit 7)"
+
+  # Bidirectional pins
+  uio[0]: "valid_out (output: 1 when pipeline filled)"
+  uio[1]: "sel[0] (input: Direct mode byte sel: 0=High, 1=Low)"
+  uio[2]: "sel[1] (input: Direct mode component sel: 0=Cos, 1=Sin)"
+  uio[3]: "addr[0] (input: Reg mode address bit 0)"
+  uio[4]: "addr[1] (input: Reg mode address bit 1)"
+  uio[5]: "addr[2] (input: Reg mode address bit 2)"
+  uio[6]: "we (input: Reg mode write enable)"
+  uio[7]: "mode (input: 0=Direct Sin/Cos, 1=Register mode)"
+
