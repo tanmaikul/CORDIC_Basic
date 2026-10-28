@@ -1,0 +1,16 @@
+# Simulation artifacts
+sim_build/
+*.vcd
+*.fst
+*.xml
+results.xml
+__pycache__/
+*.pyc
+
+# Editor & OS files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
